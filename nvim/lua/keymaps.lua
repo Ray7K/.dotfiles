@@ -40,6 +40,20 @@ vim.keymap.set('n', '<C-x>', ':HighlightColors Toggle<CR>', { desc = 'Highlight 
 
 vim.keymap.set('n', '-', ':Oil<CR>', { desc = 'Open Oil' })
 
+vim.keymap.set('n', '<leader>sh', ':FzfLua helptags<CR>', { desc = '[S]earch [H]elp' })
+vim.keymap.set('n', '<leader>sk', ':FzfLua keymaps<CR>', { desc = '[S]earch [K]eymaps' })
+vim.keymap.set('n', '<leader>sf', ':FzfLua files<CR>', { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>ss', ':FzfLua<CR>', { desc = '[S]earch [S]elect Telescope' })
+vim.keymap.set('n', '<leader>sw', ':FzfLua grep_cword<CR>', { desc = '[S]earch current [W]ord' })
+vim.keymap.set('n', '<leader>sg', ':FzfLua live_grep<CR>', { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<leader>s/', ':FzfLua grep_curbuf<CR>', { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<leader>sd', ':FzfLua diagnostics_workspace<CR>', { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>sr', ':FzfLua resume<CR>', { desc = '[S]earch [R]esume' })
+vim.keymap.set('n', '<leader><leader>', ':FzfLua buffers<CR>', { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<leader>sa', ':FzfLua git_files<CR>', { desc = '[S]earch git files' })
+vim.keymap.set('n', '<leader>g', function() end, { desc = '[G]it' })
+vim.keymap.set('n', '<leader>gr', "<CMD>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", { desc = '[G]it worktree' })
+vim.keymap.set('n', '<leader>gs', "<CMD>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>", { desc = '[G]it [S]witch worktree' })
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 

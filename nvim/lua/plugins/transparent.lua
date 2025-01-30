@@ -94,6 +94,11 @@ return {
         'MiniFilesTitleFocused',
         'NeoTreeNormal',
         'NeoTreeNormalNC',
+        'FzfLuaNormal',
+        'FzfLuaNormalNC',
+        'FzfLuaTitle',
+        'FzfLuaPreviewTitle',
+        'FzfLuaBorder',
       },
       -- table: groups you don't want to clear
       exclude_groups = {
