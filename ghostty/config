@@ -1,0 +1,18 @@
+theme = tokyonight
+
+macos-titlebar-style = transparent
+
+font-family = JetBrainsMono Nerd Font
+font-size = 14
+bold-is-bright = true
+
+window-padding-x = 5
+window-padding-y = 5
+window-padding-balance = true
+
+background-opacity = 0.96
+background-blur-radius = 20
+
+keybind = global:opt+g=toggle_quick_terminal
+
+command = zsh --login -c "if command -v tmux >/dev/null 2>&1; then tmux attach || tmux new-session -s default; fi; exec zsh"
