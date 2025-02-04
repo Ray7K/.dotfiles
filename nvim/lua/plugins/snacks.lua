@@ -11,6 +11,7 @@ return {
     bufdelete = { enabled = true },
     dashboard = { enabled = true },
     debug = { enabled = true },
+    explorer = { enabled = true },
     git = { enabled = true },
     gitbrowse = { enabled = true },
     indent = { enabled = false },
@@ -168,6 +169,13 @@ return {
             conceallevel = 3,
           },
         }
+      end,
+    },
+    {
+      '\\',
+      desc = 'Filetree',
+      function()
+        Snacks.explorer.open()
       end,
     },
   },
