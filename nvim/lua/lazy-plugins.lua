@@ -32,8 +32,6 @@ require('lazy').setup({
 
   require 'plugins.telescope',
 
-  require 'plugins.fzf-lua',
-
   require 'plugins.lspconfig',
 
   require 'plugins.conform',

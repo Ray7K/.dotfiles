@@ -14,12 +14,13 @@ else
   set shortmess=aoO
 endif
 badd +57 lua/lazy-plugins.lua
-badd +32 lua/plugins/fzf-lua.lua
+badd +28 lua/plugins/fzf-lua.lua
+badd +434 ~/dotfiles/nvim/lua/plugins/snacks.lua
 argglobal
 %argdel
-edit lua/plugins/fzf-lua.lua
+edit ~/dotfiles/nvim/lua/plugins/snacks.lua
 argglobal
-balt lua/lazy-plugins.lua
+balt lua/plugins/fzf-lua.lua
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -30,12 +31,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 32 - ((31 * winheight(0) + 22) / 45)
+let s:l = 434 - ((22 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 32
-normal! 03|
+keepjumps 434
+normal! 022|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -49,7 +50,6 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
-nohlsearch
 let g:this_session = v:this_session
 let g:this_obsession = v:this_session
 doautoall SessionLoadPost

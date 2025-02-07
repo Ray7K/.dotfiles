@@ -99,8 +99,8 @@ return {
       -- vim.keymap.set('n', '<leader>sa', builtin.git_files, { desc = '[S]earch git files' })
       --
       -- vim.keymap.set('n', '<leader>g', function() end, { desc = '[G]it' })
-      -- vim.keymap.set('n', '<leader>gr', "<CMD>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", { desc = '[G]it worktree' })
-      -- vim.keymap.set('n', '<leader>gs', "<CMD>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>", { desc = '[G]it [S]witch worktree' })
+      vim.keymap.set('n', '<leader>gr', "<CMD>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", { desc = '[G]it worktree' })
+      vim.keymap.set('n', '<leader>gs', "<CMD>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>", { desc = '[G]it [S]witch worktree' })
       --
       -- -- Slightly advanced example of overriding default behavior and theme
       -- vim.keymap.set('n', '<leader>/', function()

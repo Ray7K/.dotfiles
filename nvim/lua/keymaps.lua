@@ -36,26 +36,31 @@ vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true
 -- Map C-u to scroll half-page up and center the cursor
 vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
 
+vim.keymap.set('n', '<M-j>', ':cnext<CR>', { desc = 'QuickFix Next' })
+vim.keymap.set('n', '<M-k>', ':cprevious<CR>', { desc = 'QuickFix Prev' })
+
+vim.keymap.set('n', '<M-s>', ':source %<CR>', { desc = '[S]ource current file' })
+
 vim.keymap.set('n', '<C-x>', ':HighlightColors Toggle<CR>', { desc = 'Highlight the current line' })
 
 vim.keymap.set('n', '-', ':Oil<CR>', { desc = 'Open Oil' })
 
-vim.keymap.set('n', '<leader>sh', ':FzfLua helptags<CR>', { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>sk', ':FzfLua keymaps<CR>', { desc = '[S]earch [K]eymaps' })
-vim.keymap.set('n', '<leader>sf', ':FzfLua files<CR>', { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>s.', ':FzfLua oldfiles<CR>', { desc = '[S]earch recent files' })
-vim.keymap.set('n', '<leader>ss', ':FzfLua<CR>', { desc = '[S]earch [S]elect FzfLua' })
-vim.keymap.set('n', '<leader>sw', ':FzfLua grep_cword<CR>', { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>sg', ':FzfLua live_grep<CR>', { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>s/', ':FzfLua grep_curbuf<CR>', { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sd', ':FzfLua diagnostics_workspace<CR>', { desc = '[S]earch [D]iagnostics' })
-vim.keymap.set('n', '<leader>sr', ':FzfLua resume<CR>', { desc = '[S]earch [R]esume' })
-vim.keymap.set('n', '<leader><leader>', ':FzfLua buffers<CR>', { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>sn', ':FzfLua files cwd=' .. vim.fn.stdpath 'config' .. '<CR>', { desc = '[S]earch config files' })
-vim.keymap.set('n', '<leader>sa', ':FzfLua git_files<CR>', { desc = '[S]earch git files' })
-vim.keymap.set('n', '<leader>g', function() end, { desc = '[G]it' })
-vim.keymap.set('n', '<leader>gr', "<CMD>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", { desc = '[G]it worktree' })
-vim.keymap.set('n', '<leader>gs', "<CMD>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>", { desc = '[G]it [S]witch worktree' })
+-- vim.keymap.set('n', '<leader>sh', ':FzfLua helptags<CR>', { desc = '[S]earch [H]elp' })
+-- vim.keymap.set('n', '<leader>sk', ':FzfLua keymaps<CR>', { desc = '[S]earch [K]eymaps' })
+-- vim.keymap.set('n', '<leader>sf', ':FzfLua files<CR>', { desc = '[S]earch [F]iles' })
+-- vim.keymap.set('n', '<leader>s.', ':FzfLua oldfiles<CR>', { desc = '[S]earch recent files' })
+-- vim.keymap.set('n', '<leader>ss', ':FzfLua<CR>', { desc = '[S]earch [S]elect FzfLua' })
+-- vim.keymap.set('n', '<leader>sw', ':FzfLua grep_cword<CR>', { desc = '[S]earch current [W]ord' })
+-- vim.keymap.set('n', '<leader>sg', ':FzfLua live_grep<CR>', { desc = '[S]earch by [G]rep' })
+-- vim.keymap.set('n', '<leader>s/', ':FzfLua grep_curbuf<CR>', { desc = '[S]earch by [G]rep' })
+-- vim.keymap.set('n', '<leader>sd', ':FzfLua diagnostics_workspace<CR>', { desc = '[S]earch [D]iagnostics' })
+-- vim.keymap.set('n', '<leader>sr', ':FzfLua resume<CR>', { desc = '[S]earch [R]esume' })
+-- vim.keymap.set('n', '<leader><leader>', ':FzfLua buffers<CR>', { desc = '[ ] Find existing buffers' })
+-- vim.keymap.set('n', '<leader>sn', ':FzfLua files cwd=' .. vim.fn.stdpath 'config' .. '<CR>', { desc = '[S]earch config files' })
+-- vim.keymap.set('n', '<leader>sa', ':FzfLua git_files<CR>', { desc = '[S]earch git files' })
+-- vim.keymap.set('n', '<leader>g', function() end, { desc = '[G]it' })
+-- vim.keymap.set('n', '<leader>gr', "<CMD>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", { desc = '[G]it worktree' })
+-- vim.keymap.set('n', '<leader>gs', "<CMD>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>", { desc = '[G]it [S]witch worktree' })
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
