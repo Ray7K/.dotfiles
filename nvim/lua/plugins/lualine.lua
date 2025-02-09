@@ -1,29 +1,12 @@
 return {
-  'nvim-lualine/lualine.nvim',
-  dependencies = {
-    'nvim-tree/nvim-web-devicons',
+  "nvim-lualine/lualine.nvim",
+  opts = {
+    options = {
+      theme = "auto",
+      globalstatus = vim.o.laststatus == 3,
+      disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
+      component_separators = { "" },
+      section_separators = { "" },
+    },
   },
-  config = function()
-    require('lualine').setup {
-      options = {
-        icons_enabled = true,
-        theme = 'auto',
-        component_separators = { '' },
-        section_separators = { '' },
-        disabled_filetypes = {
-          statusline = {},
-          winbar = {},
-        },
-        ignore_focus = {},
-        always_divide_middle = true,
-        always_show_tabline = true,
-        globalstatus = false,
-        refresh = {
-          statusline = 100,
-          tabline = 100,
-          winbar = 100,
-        },
-      },
-    }
-  end,
 }
