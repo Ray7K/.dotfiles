@@ -4,3 +4,6 @@
 vim.keymap.set("n", "<M-s>", ":source %<CR>", { desc = "Source current file" })
 vim.keymap.set("n", "<C-x>", ":HighlightColors Toggle<CR>", { desc = "Highlight the current line" })
 vim.keymap.set("n", "-", ":Oil<CR>", { desc = "Open Oil" })
+
+vim.keymap.set("n", "<C-d>", "<C-d> zz")
+vim.keymap.set("n", "<C-u>", "<C-u> zz")
