@@ -19,6 +19,7 @@ return {
         css = { "prettierd", "prettier", stop_after_first = true },
         javascript = { "prettierd", "prettier", stop_after_first = true },
         typescript = { "prettierd", "prettier", stop_after_first = true },
+        rust = { "rustfmt" },
       },
       -- The options you set here will be merged with the builtin formatters.
       -- You can also define any custom formatters here.

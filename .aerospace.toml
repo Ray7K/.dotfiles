@@ -70,6 +70,10 @@ if.app-name-regex-substring = 'Mail'
 run = ['layout floating']
 
 [[on-window-detected]]
+if.app-name-regex-substring = 'Weather'
+run = ['layout floating']
+
+[[on-window-detected]]
 if.app-name-regex-substring = 'IINA'
 run = ['layout floating']
 
@@ -86,9 +90,29 @@ if.app-name-regex-substring = 'AppCleaner'
 run = ['layout floating']
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'LiesOfP'
+if.app-name-regex-substring = 'Lies of P'
 run = ['layout floating']
 
+[[on-window-detected]]
+if.app-name-regex-substring = 'Parallels'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Discord'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Karabiner-Elements'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Zen'
+if.window-title-regex-substring = 'Picture-in-Picture'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Prism Launcher'
+run = ['layout floating']
 # Possible values: (qwerty|dvorak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
 [key-mapping]
