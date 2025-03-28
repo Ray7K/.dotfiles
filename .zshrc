@@ -1,5 +1,6 @@
 export PATH="$PATH":"$HOME/.local/scripts/"
 export PATH="$PATH:/usr/local/share/dotnet"
+export PATH="$PATH:/Users/raiyankataria/.cargo/bin/"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
