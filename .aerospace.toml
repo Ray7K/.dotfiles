@@ -117,6 +117,10 @@ run = ['layout floating']
 [[on-window-detected]]
 if.app-name-regex-substring = 'KeePassXC'
 run = ['layout floating']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Books'
+run = ['layout floating']
 # Possible values: (qwerty|dvorak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
 [key-mapping]
