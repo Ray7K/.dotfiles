@@ -102,6 +102,7 @@ return {
         "FzfLuaTitle",
         "FzfLuaPreviewTitle",
         "FzfLuaBorder",
+        "TroubleNormal",
       },
       -- table: groups you don't want to clear
       exclude_groups = {
