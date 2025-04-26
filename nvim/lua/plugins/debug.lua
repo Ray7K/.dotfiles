@@ -1,22 +1,12 @@
 return {
   'mfussenegger/nvim-dap',
   dependencies = {
-    -- Creates a beautiful debugger UI
     'rcarriga/nvim-dap-ui',
 
-    -- Required dependency for nvim-dap-ui
     'nvim-neotest/nvim-nio',
-
-    -- Installs the debug adapters for you
-    'williamboman/mason.nvim',
-    'jay-babu/mason-nvim-dap.nvim',
-
-    -- Add your own debuggers here
-    'leoluz/nvim-dap-go',
   },
   keys = function(_, keys)
     return {
-      -- Basic debugging keymaps, feel free to change to your liking!
       {
         '<leader>dB',
         function()
@@ -158,20 +148,54 @@ return {
     local dap = require 'dap'
     local dapui = require 'dapui'
 
-    require('mason-nvim-dap').setup {
-      -- Makes a best effort to setup the various debuggers with
-      -- reasonable debug configurations
-      automatic_installation = true,
+    dap.adapters.lldb = {
+      type = 'executable',
+      command = '/nix/store/5izzsb76r64msyjsi0l06bm1bqiv2v18-lldb-20.1.2/bin/lldb',
+      name = 'lldb'
+    }
 
-      -- You can provide additional configuration to the handlers,
-      -- see mason-nvim-dap README for more information
-      handlers = {},
+    dap.configurations.c = {
+      {
+        name = 'Launch',
+        type = 'lldb',
+        request = 'launch',
+        program = function()
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end,
+        cwd = '${workspaceFolder}',
+        stopOnEntry = false,
+        args = {},
+      },
+    }
 
-      -- You'll need to check that you have the required things installed
-      -- online, please don't ask me how to install them :)
-      ensure_installed = {
-        -- Update this to ensure that you have the debuggers for the langs you want
-        'delve',
+    dap.configurations.cpp = dap.configurations.c
+
+    dap.configurations.rust = {
+      {
+        name = 'Launch',
+        type = 'lldb',
+        request = 'launch',
+        program = function()
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end,
+        cwd = '${workspaceFolder}',
+        stopOnEntry = false,
+        args = {},
+        initCommands = function()
+          -- Find out where to look for the pretty printer Python module.
+          local rustc_sysroot = vim.fn.trim(vim.fn.system 'rustc --print sysroot')
+          assert(
+            vim.v.shell_error == 0,
+            'failed to get rust sysroot using `rustc --print sysroot`: '
+              .. rustc_sysroot
+          )
+          local script_file = rustc_sysroot .. '/lib/rustlib/etc/lldb_lookup.py'
+          local commands_file = rustc_sysroot .. '/lib/rustlib/etc/lldb_commands'
+          return {
+            ([[!command script import '%s']]):format(script_file),
+            ([[command source '%s']]):format(commands_file),
+          }
+        end,
       },
     }
 
