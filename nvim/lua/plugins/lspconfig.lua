@@ -127,6 +127,7 @@ return {
         pyright = {},
         rust_analyzer = {},
         emmet_language_server = {},
+        nixd = {},
       }
 
       for server_name, server_config in pairs(servers) do
