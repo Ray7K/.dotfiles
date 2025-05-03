@@ -123,11 +123,14 @@ return {
             },
           },
         },
-        basedpyright = {},
-        pyright = {},
         rust_analyzer = {},
+        html = {},
+        cssls = {},
+        ts_ls = {},
         emmet_language_server = {},
+        basedpyright = {},
         nixd = {},
+        lua_ls = {},
       }
 
       for server_name, server_config in pairs(servers) do

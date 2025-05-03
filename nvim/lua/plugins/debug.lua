@@ -2,7 +2,10 @@ return {
   'mfussenegger/nvim-dap',
   dependencies = {
     'rcarriga/nvim-dap-ui',
-
+    {
+      "theHamsta/nvim-dap-virtual-text",
+      opts = {},
+    },
     'nvim-neotest/nvim-nio',
   },
   keys = function(_, keys)
@@ -141,6 +144,14 @@ return {
         desc = 'Eval',
         mode = { 'n', 'v' },
       },
+      {
+        '<leader>dv',
+        function()
+          vim.cmd('DapVirtualTextToggle')
+        end,
+        desc = 'Toggle Virtual Text',
+        mode = { 'n', 'v' },
+      },
     }
   end,
 
@@ -148,56 +159,35 @@ return {
     local dap = require 'dap'
     local dapui = require 'dapui'
 
-    dap.adapters.lldb = {
-      type = 'executable',
-      command = '/nix/store/5izzsb76r64msyjsi0l06bm1bqiv2v18-lldb-20.1.2/bin/lldb',
-      name = 'lldb'
+    dap.adapters.codelldb = {
+      type = 'server',
+      port = '${port}',
+      executable = {
+        command = 'codelldb',
+        args = {'--port', '${port}'}
+      }
     }
 
     dap.configurations.c = {
       {
         name = 'Launch',
-        type = 'lldb',
+        type = 'codelldb',
         request = 'launch',
         program = function()
           return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
         end,
         cwd = '${workspaceFolder}',
         stopOnEntry = false,
-        args = {},
+        args = function()
+          local args_string = vim.fn.input('Arguments: ')
+          return vim.split(args_string, ' ')
+        end,
       },
     }
 
     dap.configurations.cpp = dap.configurations.c
 
-    dap.configurations.rust = {
-      {
-        name = 'Launch',
-        type = 'lldb',
-        request = 'launch',
-        program = function()
-          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-        end,
-        cwd = '${workspaceFolder}',
-        stopOnEntry = false,
-        args = {},
-        initCommands = function()
-          -- Find out where to look for the pretty printer Python module.
-          local rustc_sysroot = vim.fn.trim(vim.fn.system 'rustc --print sysroot')
-          assert(
-            vim.v.shell_error == 0,
-            'failed to get rust sysroot using `rustc --print sysroot`: '
-              .. rustc_sysroot
-          )
-          local script_file = rustc_sysroot .. '/lib/rustlib/etc/lldb_lookup.py'
-          local commands_file = rustc_sysroot .. '/lib/rustlib/etc/lldb_commands'
-          return {
-            ([[!command script import '%s']]):format(script_file),
-            ([[command source '%s']]):format(commands_file),
-          }
-        end,
-      },
-    }
+    dap.configurations.rust = dap.configurations.c
 
     dapui.setup {}
 
