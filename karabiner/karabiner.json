@@ -7,14 +7,14 @@
                     {
                         "manipulators": [
                             {
-                                "description": "Change cmd + space to f13.",
+                                "description": "Change cmd + space to f12.",
                                 "from": {
                                     "key_code": "spacebar",
                                     "modifiers": { "mandatory": ["left_command"] }
                                 },
                                 "to": [
                                     {
-                                        "key_code": "f13",
+                                        "key_code": "f12",
                                         "modifiers": ["fn"]
                                     }
                                 ],
