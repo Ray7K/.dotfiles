@@ -54,6 +54,8 @@ require('lazy').setup({
   require 'plugins.fugitive',
 
   require 'plugins.noice',
+
+  require 'plugins.sidekick'
 }, {
   ui = {
     icons = vim.g.have_nerd_font and {} or {
