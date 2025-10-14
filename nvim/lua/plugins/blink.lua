@@ -4,7 +4,7 @@ return {
     'rafamadriz/friendly-snippets',
     'giuxtaposition/blink-cmp-copilot',
   },
-  event = 'InsertEnter',
+  event = { 'InsertEnter', 'CmdlineEnter' },
 
   version = '1.*',
 
