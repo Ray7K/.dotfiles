@@ -130,7 +130,7 @@ return {
         emmet_language_server = {},
         basedpyright = {},
         nixd = {},
-        lua_ls = {},
+        yamlls = {},
       }
 
       for server_name, server_config in pairs(servers) do
