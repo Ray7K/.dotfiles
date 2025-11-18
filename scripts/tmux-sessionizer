@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+get_combined_list() {
+    tmux list-sessions -F 'session: #S' 2>/dev/null || true
+
+    find \
+        ~/Documents/Projects \
+        ~/Documents/prog-prac/ \
+        -mindepth 1 -maxdepth 1 -type d 2>/dev/null || true
+}
+
+if [[ "${1:-}" == "--refresh" ]]; then
+    get_combined_list
+    exit 0
+fi
+
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    combined_list=$(get_combined_list)
+
+    selected=$(fzf \
+        --query "${1-}" \
+        --bind 'ctrl-x:reload(
+            selected={}; 
+
+            case "$selected" in
+                session:*)
+                    target="${selected#session: }";
+                    tmux kill-session -t "$target" 2>/dev/null || true;
+                    ;;
+            esac;
+
+            "'"$0"'" --refresh
+        )' \
+        <<< "$combined_list"
+    )
+fi
+
+if [[ $selected == session:* ]]; then
+    name=${selected#session: }
+
+    if ! tmux has-session -t="$name" 2>/dev/null; then
+        echo "Error: Session '$name' no longer exists." >&2
+        exit 1
+    fi
+
+    if [[ -z ${TMUX:-} ]]; then
+        exec tmux attach -t "$name"
+    else
+        exec tmux switch-client -t "$name"
+    fi
+fi
+
+dir="$selected"
+name=$(basename "$dir" | tr . _)
+tmux_running=$(pgrep tmux || true)
+
+if [[ -z ${TMUX:-} && -z $tmux_running ]]; then
+    exec tmux new-session -s "$name" -c "$dir"
+fi
+
+if ! tmux has-session -t="$name" 2>/dev/null; then
+    tmux new-session -ds "$name" -c "$dir"
+fi
+
+if [[ -z ${TMUX:-} ]]; then
+    exec tmux attach -t "$name"
+else
+    exec tmux switch-client -t "$name"
+fi
