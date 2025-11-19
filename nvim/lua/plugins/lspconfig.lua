@@ -131,6 +131,7 @@ return {
         basedpyright = {},
         nixd = {},
         yamlls = {},
+        texlab = {},
       }
 
       for server_name, server_config in pairs(servers) do
