@@ -41,6 +41,7 @@ return {
         python = { 'isort', 'black' },
         nix = { 'nixfmt' },
         lua = { 'stylua' },
+        tex = { 'tex-fmt' },
       },
     },
   },
