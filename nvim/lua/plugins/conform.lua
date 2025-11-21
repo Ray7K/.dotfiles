@@ -38,6 +38,7 @@ return {
         typescript = { 'prettierd' },
         html = { 'prettierd' },
         css = { 'prettierd' },
+        markdown = { 'prettierd' },
         python = { 'isort', 'black' },
         nix = { 'nixfmt' },
         lua = { 'stylua' },
