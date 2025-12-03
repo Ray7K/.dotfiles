@@ -65,8 +65,17 @@ vim.opt.scrolloff = 10
 -- Enable true color
 vim.opt.termguicolors = true
 
+-- Fold options
+vim.opt.foldlevel = 99
+vim.opt.foldmethod = 'indent'
+vim.opt.foldtext = ''
+
+-- Set tab and indentation options
+vim.opt.smartindent = true
+vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
+vim.opt.shiftround = true
 
 vim.diagnostic.config {
   virtual_text = true,
