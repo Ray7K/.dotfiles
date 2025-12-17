@@ -63,6 +63,7 @@ return {
         { '<leader>s', group = '[S]earch' },
         { '<leader>g', group = '[G]it' },
         { '<leader>gh', group = '[G]it [H]unk' },
+        { '<leader>gd', group = '[G]it [D]iff' },
         { '<leader>u', group = 'Toggle' },
       },
     },
