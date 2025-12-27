@@ -1,0 +1,2 @@
+new_tab default
+launch zsh --login -c "command -v tmux >/dev/null 2>&1 && (tmux attach || tmux new -s default); exec zsh"
