@@ -134,6 +134,7 @@ return {
         nixd = {},
         yamlls = {},
         texlab = {},
+        marksman = {},
       }
 
       for server_name, server_config in pairs(servers) do
