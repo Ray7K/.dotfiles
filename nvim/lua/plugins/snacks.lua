@@ -30,7 +30,59 @@ return {
     terminal = { enabled = true },
     util = { enabled = true },
     words = { enabled = true },
+    image = {
+      enabled = true,
+      doc = {
+        enabled = true,
+        inline = true,
+        float = true,
+      },
+      math = {
+        enabled = true, -- enable math expression rendering
+        latex = {
+          font_size = 'normalsize',
+        },
+      },
+      resolve = function(path, src)
+        local api = require 'obsidian.api'
+        if api.path_is_note(path) then
+          return api.resolve_attachment_path(src)
+        end
+      end,
+      convert = {
+        ---@type snacks.image.args
+        mermaid = { 'false' },
+        magick = {
+          default = { '{src}[0]', '-scale', '3024x1964>' },
+
+          vector = {
+            '-density',
+            384,
+            '{src}[{page}]',
+          },
+
+          math = {
+            '-density',
+            384,
+            '{src}[{page}]',
+            '-trim',
+          },
+
+          pdf = {
+            '-density',
+            384,
+            '{src}[{page}]',
+            '-background',
+            'white',
+            '-alpha',
+            'remove',
+            '-trim',
+          },
+        },
+      },
+    },
   },
+
   keys = {
     {
       '<leader>.',

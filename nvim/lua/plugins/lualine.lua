@@ -37,6 +37,9 @@ return {
         section_separators = { '' },
       },
       sections = {
+        lualine_x = {
+          'b:obsidian_status',
+        },
         lualine_c = {
           { 'filename' },
           {

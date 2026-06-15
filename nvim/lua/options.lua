@@ -80,3 +80,5 @@ vim.opt.shiftround = true
 vim.diagnostic.config {
   virtual_text = true,
 }
+
+vim.opt.conceallevel = 2
