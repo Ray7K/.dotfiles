@@ -7,8 +7,10 @@ get_combined_list() {
 
     find \
         ~/Documents/Projects \
-        ~/Documents/prog-prac/ \
         -mindepth 1 -maxdepth 1 -type d 2>/dev/null || true
+
+    printf '%s\n' \
+        "/Users/raiyankataria/Library/CloudStorage/GoogleDrive-raiyankataria1@gmail.com/My Drive/Obsidian Vault"
 }
 
 if [[ "${1:-}" == "--refresh" ]]; then
