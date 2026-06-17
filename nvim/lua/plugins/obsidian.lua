@@ -11,43 +11,27 @@ return {
   },
   ---@type obsidian.config
   opts = {
-    workspaces = {
-      {
-        name = 'personal',
-        path = '/Users/raiyankataria/Library/CloudStorage/GoogleDrive-raiyankataria1@gmail.com/My Drive/Obsidian Vault',
-      },
-    },
-
     legacy_commands = false,
-
-    notes_subdir = '05-Note Inbox',
-
-    note = {
-      template = nil,
-    },
-
-    new_notes_location = 'notes_subdir',
-
-    note_id_func = function(title)
-      if title then
-        return title
-      else
-        return tostring(os.time())
-      end
-    end,
-
-    frontmatter = {
-      enabled = false,
-      sort = false,
-    },
-
-    templates = {
-      folder = '07-Additional/Templates',
-    },
 
     search = {
       sort_by = 'modified',
       sort_reversed = true,
+    },
+
+    statusline = {
+      enabled = false,
+      format = '{{backlinks}} backlinks  {{words}} words  {{chars}} chars',
+    },
+
+    footer = {
+      enabled = true,
+      format = '{{backlinks}} backlinks  {{words}} words  {{chars}} chars',
+      hl_group = 'Comment',
+      separator = string.rep('-', 80),
+    },
+
+    frontmatter = {
+      enabled = false,
     },
 
     file = {
@@ -58,27 +42,10 @@ return {
       },
     },
 
-    daily_notes = {
-      folder = '05-Note Inbox/Journal/Daily',
-    },
-
-    link = {
-      style = 'wiki',
-      auto_update = true,
-    },
-
-    attachments = {
-      folder = '07-Additional/Attachments',
-    },
-
     checkbox = {
       enabled = true,
       create_new = true,
       order = { ' ', 'x' },
-    },
-
-    footer = {
-      enabled = false,
     },
 
     ui = {
@@ -88,13 +55,62 @@ return {
     picker = {
       name = 'snacks.picker',
     },
+
+    link = {
+      style = 'wiki',
+      auto_update = true,
+    },
+
+    note_id_func = function(title)
+      if title ~= nil then
+        return title
+      end
+
+      return os.date '%Y%m%d%H%M'
+    end,
+
+    workspaces = {
+      {
+        name = 'personal',
+        path = '/Users/raiyankataria/Library/CloudStorage/GoogleDrive-raiyankataria1@gmail.com/My Drive/Obsidian Vault',
+      },
+    },
+
+    templates = {
+      folder = '08-Additional/Templates',
+    },
+
+    notes_subdir = '06-Note Inbox',
+
+    new_notes_location = 'notes_subdir',
+
+    note = {
+      template = '08-Additional/Templates/New Note Template.md',
+    },
+
+    daily_notes = {
+      folder = '05-Journal/Daily',
+      template = '08-Additional/Templates/Daily Note Template.md',
+    },
+
+    unique_note = {
+      format = 'YYYYMMDDHHmm',
+      template = '08-Additional/Templates/New Note Template.md',
+    },
+
+    attachments = {
+      folder = '08-Additional/Attachments',
+    },
   },
+
   keys = {
     -- Notes
     { '<leader>oo', '<cmd>Obsidian quick_switch<cr>', desc = 'Open note' },
     { '<leader>oss', '<cmd>Obsidian search<cr>', desc = 'Search notes' },
     { '<leader>ost', '<cmd>Obsidian tags<cr>', desc = 'Search tags' },
     { '<leader>on', '<cmd>Obsidian new<cr>', desc = 'New note' },
+    { '<leader>oN', '<cmd>Obsidian new_from_template<cr>', desc = 'New note from template' },
+    { '<leader>ou', '<cmd>Obsidian unique_note<cr>', desc = 'Create unique note' },
 
     -- Daily notes
     { '<leader>ot', '<cmd>Obsidian today<cr>', desc = 'Today' },
@@ -119,8 +135,5 @@ return {
 
     -- Obsidian GUI
     { '<leader>oa', '<cmd>Obsidian open<cr>', desc = 'Open in Obsidian' },
-
-    -- Navigation
-    { 'gf', '<cmd>Obsidian follow_link<cr>', desc = 'Follow link' },
   },
 }
