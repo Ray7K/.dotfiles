@@ -1,308 +1,183 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-[aws]
-symbol = " "
+format = """
+[ ]()\
+$os\
+$username\
 
-[azure]
-symbol = " "
+$directory\
 
-[battery]
-full_symbol = "󰁹 "
-charging_symbol = "󰂄 "
-discharging_symbol = "󰂃 "
-unknown_symbol = "󰂑 "
-empty_symbol = "󰂎 "
+$git_branch\
+$git_status\
 
-[buf]
-symbol = " "
+$package\
 
-[bun]
-symbol = " "
+$c\
+$cpp\
+$rust\
+$zig\
+$swift\
+$golang\
 
-[c]
-symbol = " "
+$python\
+$lua\
+$php\
 
-[cpp]
-symbol = " "
+$java\
+$kotlin\
+$dotnet\
 
-[cmake]
-symbol = " "
+$nodejs\
+$bun\
+$deno\
 
-[cobol]
-symbol = " "
+$haskell\
 
-[conda]
-symbol = " "
+$cmake\
+$meson\
+$gradle\
+$maven\
 
-[container]
-symbol = " "
+$nix_shell\
+$conda\
+$docker_context\
 
-[crystal]
-symbol = " "
+$cmd_duration\
+$line_break\
+$character
+"""
 
-[dart]
-symbol = " "
+[os]
+disabled = false
 
-[deno]
-symbol = " "
+[os.symbols]
+Windows = ""
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+AOSC = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
 
-[direnv]
-symbol = " "
+[username]
+show_always = true
+style_user = "bold fg:blue"
+style_root = "bold fg:blue"
+format = '[ $user ]($style)'
 
 [directory]
-read_only = " 󰌾"
-
-[docker_context]
-symbol = " "
-
-[dotnet]
-symbol = " "
-
-[elixir]
-symbol = " "
-
-[elm]
-symbol = " "
-
-[erlang]
-symbol = " "
-
-[fennel]
-symbol = " "
-
-[fortran]
-symbol = " "
-
-[fossil_branch]
-symbol = " "
-
-[gcloud]
-symbol = "󱇶 "
-
-[gleam]
-symbol = " "
 
 [git_branch]
 symbol = " "
+# style = "bold fg:green"
 
-[git_commit]
-tag_symbol = '  '
+[git_status]
+style = "bold fg:purple"
+
+[c]
+disabled = false
+symbol = ""
+
+[cpp]
+disabled = false
+symbol = " "
+
+[rust]
+symbol = " "
+
+[zig]
+symbol = " "
+
+[swift]
+symbol = " "
 
 [golang]
 symbol = " "
 
-[gradle]
-symbol = " "
-
-[guix_shell]
-symbol = " "
-
-[haskell]
-symbol = " "
-
-[haxe]
-symbol = " "
-
-[helm]
-symbol = " "
-
-[hg_branch]
-symbol = " "
-
-[hostname]
-ssh_symbol = " "
-
-[java]
-symbol = " "
-
-[julia]
-symbol = " "
-
-[kotlin]
-symbol = " "
-
-[kubernetes]
-symbol = "󱃾 "
+[python]
+symbol = " "
 
 [lua]
 symbol = " "
 
-[maven]
-symbol = " "
+[php]
+symbol = " "
 
-[memory_usage]
-symbol = "󰍛 "
+[java]
+symbol = " "
+
+[kotlin]
+symbol = " "
+
+[dotnet]
+symbol = " "
+
+[nodejs]
+symbol = "󰎙 "
+
+[bun]
+symbol = " "
+
+[deno]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[cmake]
+symbol = " "
 
 [meson]
 symbol = "󰔷 "
 
-[mojo]
-symbol = "󰈸 "
+[gradle]
+symbol = " "
 
-[nats]
-symbol = " "
+[maven]
+symbol = " "
 
-[netns]
-symbol = "󰛳 "
-
-[nim]
-symbol = " "
+[package]
+# format = '[[ $symbol($version) ](fg:t0 bg:green)]($style)'
 
 [nix_shell]
 symbol = " "
 
-[nodejs]
-symbol = " "
+[conda]
+symbol = " "
+ignore_base = false
 
-[ocaml]
-symbol = " "
+[docker_context]
+symbol = " "
 
-[odin]
-symbol = "󰟢 "
+[line_break]
+disabled = false
 
-[opa]
-symbol = " "
+[character]
+disabled = false
+success_symbol = '[ ](bold fg:green)'
+error_symbol = '[ ](bold fg:red)'
+vimcmd_symbol = '[ ](bold fg:green)'
+vimcmd_replace_one_symbol = '[ ](bold fg:lavender)'
+vimcmd_replace_symbol = '[ ](bold fg:lavender)'
+vimcmd_visual_symbol = '[ ](bold fg:yellow)'
 
-[openstack]
-symbol = " "
-
-[os.symbols]
-AIX = " "
-AlmaLinux = " "
-Alpaquita = " "
-Alpine = " "
-ALTLinux = " "
-Amazon = " "
-Android = " "
-AOSC = " "
-Arch = " "
-Artix = " "
-Bluefin = " "
-CachyOS = " "
-CentOS = " "
-Debian = " "
-DragonFly = " "
-Elementary = " "
-Emscripten = " "
-EndeavourOS = " "
-Fedora = " "
-FreeBSD = " "
-Garuda = " "
-Gentoo = " "
-HardenedBSD = "󰞌 "
-Illumos = " "
-InstantOS = " "
-Ios = "󰀷 "
-Kali = " "
-Linux = " "
-Mabox = " "
-Macos = " "
-Manjaro = " "
-Mariner = " "
-MidnightBSD = " "
-Mint = " "
-NetBSD = " "
-NixOS = " "
-Nobara = " "
-OpenBSD = " "
-OpenCloudOS = " "
-openEuler = " "
-openSUSE = " "
-OracleLinux = "󰺡 "
-PikaOS = " "
-Pop = " "
-Raspbian = " "
-Redhat = "󱄛 "
-RedHatEnterprise = "󱄛 "
-Redox = "󰀘 "
-RockyLinux = " "
-Solus = " "
-SUSE = " "
-Ubuntu = " "
-Ultramarine = " "
-Unknown = " "
-Uos = " "
-Void = " "
-Windows = "󰍲 "
-Zorin = " "
-
-[package]
-symbol = "󰏗 "
-
-[perl]
-symbol = " "
-
-[php]
-symbol = " "
-
-[pijul_channel]
-symbol = " "
-
-[pixi]
-symbol = "󰏗 "
-
-[pulumi]
-symbol = " "
-
-[purescript]
-symbol = " "
-
-[python]
-symbol = " "
-
-[raku]
-symbol = "󱖊 "
-
-[red]
-symbol = "󱍼 "
-
-[rlang]
-symbol = "󰟔 "
-
-[ruby]
-symbol = " "
-
-[rust]
-symbol = "󱘗 "
-
-[scala]
-symbol = " "
-
-[shlvl]
-symbol = "󰹍 "
-
-[singularity]
-symbol = " "
-
-[solidity]
-symbol = " "
-
-[spack]
-symbol = " "
-
-[status]
-symbol = " "
-
-[sudo]
-symbol = " "
-
-[swift]
-symbol = " "
-
-[terraform]
-symbol = " "
-
-[vlang]
-symbol = " "
-
-[typst]
-symbol = " "
-
-[vagrant]
-symbol = " "
-
-[xmake]
-symbol = " "
-
-[zig]
-symbol = " "
+[cmd_duration]
+show_milliseconds = false
+format = "in $duration "
+style = "bg:lavender"
+disabled = false
+show_notifications = true
+min_time_to_notify = 45000
