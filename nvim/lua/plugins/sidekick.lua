@@ -6,6 +6,11 @@ return {
         backend = 'tmux',
         enabled = true,
       },
+      tools = {
+        antigravity = {
+          cmd = { 'agy' },
+        },
+      },
     },
   },
   keys = {
