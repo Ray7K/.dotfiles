@@ -85,6 +85,7 @@ return {
         'javascript',
         'json',
         'kconfig',
+        'latex',
         'llvm',
         'lua',
         'luadoc',
