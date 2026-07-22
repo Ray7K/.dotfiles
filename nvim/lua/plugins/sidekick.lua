@@ -74,9 +74,16 @@ return {
     {
       '<leader>ag',
       function()
-        require('sidekick.cli').toggle { name = 'gemini', focus = true }
+        require('sidekick.cli').toggle { name = 'antigravity', focus = true }
       end,
-      desc = 'Sidekick Toggle Gemini',
+      desc = 'Sidekick Toggle Antigravity',
+    },
+    {
+      '<leader>ac',
+      function()
+        require('sidekick.cli').toggle { name = 'codex', focus = true }
+      end,
+      desc = 'Sidekick Toggle Codex',
     },
   },
 }
