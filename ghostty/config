@@ -1,7 +1,7 @@
 theme = tokyonight
 
 macos-titlebar-style = transparent
-macos-option-as-alt = true
+macos-option-as-alt = left
 
 font-family = JetBrainsMono Nerd Font
 font-size = 14
