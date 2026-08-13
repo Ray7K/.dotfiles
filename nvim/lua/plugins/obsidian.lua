@@ -75,9 +75,34 @@ return {
         path = '/Users/raiyankataria/Library/CloudStorage/GoogleDrive-raiyankataria1@gmail.com/My Drive/Obsidian Vault',
       },
     },
-
     templates = {
       folder = '08-Additional/Templates',
+      date_format = 'YYYY-MM-DD',
+      time_format = 'HH:mm',
+
+      substitutions = {
+        daily_date = function(ctx)
+          local filename = ctx.partial_note.id
+          return filename
+        end,
+
+        daily_heading = function(ctx)
+          local filename = ctx.partial_note.id
+
+          local y, m, d = filename:match '^(%d%d%d%d)%-(%d%d)%-(%d%d)$'
+          if not y then
+            return filename
+          end
+
+          local timestamp = os.time {
+            year = assert(tonumber(y)),
+            month = assert(tonumber(m)),
+            day = assert(tonumber(d)),
+          }
+
+          return require('obsidian.util').format_date(timestamp, 'dddd, MMMM D, YYYY')
+        end,
+      },
     },
 
     notes_subdir = '06-Note Inbox',
@@ -114,8 +139,8 @@ return {
 
     -- Daily notes
     { '<leader>ot', '<cmd>Obsidian today<cr>', desc = 'Today' },
-    { '<leader>oy', '<cmd>Obsidian yesterday<cr>', desc = 'Yesterday' },
-    { '<leader>om', '<cmd>Obsidian tomorrow<cr>', desc = 'Tomorrow' },
+    { '<leader>oy', '<cmd>Obsidian today -1<cr>', desc = 'Yesterday' },
+    { '<leader>om', '<cmd>Obsidian today +1<cr>', desc = 'Tomorrow' },
     { '<leader>od', '<cmd>Obsidian dailies<cr>', desc = 'Daily notes' },
 
     -- Current note
