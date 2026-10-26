@@ -93,6 +93,10 @@ run = ['layout floating']
 if = 'test %{app-name} = KeePassXC'
 run = ['layout floating']
 
+[[on-window-detected]]
+if = 'test %{app-name} = KOReader'
+run = ['layout floating']
+
 # Possible values: (qwerty|dvorak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
 [key-mapping]
