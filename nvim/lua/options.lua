@@ -82,3 +82,5 @@ vim.diagnostic.config {
 }
 
 vim.opt.conceallevel = 2
+
+vim.opt.fillchars = { eob = ' ' }
